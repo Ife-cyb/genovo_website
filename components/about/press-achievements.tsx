@@ -10,7 +10,7 @@ export default function PressAchievements() {
       icon: Award,
       title: "Tech Innovation Award",
       description: "Recognized for breakthrough work in digital sovereignty and privacy-first architecture",
-      date: "2024",
+      date: "2025",
       category: "Innovation",
       color: "blue",
     },
@@ -18,7 +18,7 @@ export default function PressAchievements() {
       icon: Star,
       title: "Emerging Startup",
       description: "Featured as a promising African tech startup building the future of secure infrastructure",
-      date: "2024",
+      date: "2025",
       category: "Recognition",
       color: "purple",
     },
@@ -26,9 +26,30 @@ export default function PressAchievements() {
       icon: TrendingUp,
       title: "Product Development",
       description: "Successfully launched MVP for multiple products with strong market validation",
-      date: "2024",
+      date: "2025",
       category: "Product",
       color: "green",
+    },
+    {
+      title: "Forbes 30 Under 30",
+      description: "Recognition for innovation in technology",
+      date: "2025",
+      category: "Recognition",
+      color: "purple",
+    },
+    {
+      title: "TechCrunch Disrupt Winner",
+      description: "Best Enterprise Solution",
+      date: "2025",
+      category: "Recognition",
+      color: "purple",
+    },
+    {
+      title: "AI Excellence Award",
+      description: "For contributions to industrial automation",
+      date: "2025",
+      category: "Recognition",
+      color: "purple",
     },
   ]
 
@@ -36,21 +57,39 @@ export default function PressAchievements() {
     {
       publication: "Tech Africa News",
       headline: "Genovo Technologies: Pioneering Digital Sovereignty in Africa",
-      date: "Dec 2024",
+      date: "Dec 2025",
       type: "Feature Article",
     },
     {
       publication: "Security Today",
       headline: "The Future of Privacy-First Infrastructure: SCOS Deep Dive",
-      date: "Nov 2024",
+      date: "Nov 2025",
       type: "Technical Review",
     },
     {
       publication: "Startup Nigeria",
       headline: "Nigerian Startup Building Next-Gen AI Platforms",
-      date: "Oct 2024",
+      date: "Oct 2025",
       type: "Startup Profile",
     },
+  ]
+
+  const pressCoverage = [
+    {
+      source: "TechCrunch",
+      title: "Genovo's SCOS: Revolutionizing Industrial Automation",
+      date: "Dec 2025",
+    },
+    {
+      source: "Forbes",
+      title: "The Future of Smart Manufacturing",
+      date: "Nov 2025",
+    },
+    {
+      source: "Bloomberg",
+      title: "Genovo Raises Series A",
+      date: "Oct 2025",
+    }
   ]
 
   return (

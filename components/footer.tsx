@@ -2,15 +2,16 @@
 
 import Link from "next/link"
 import { Github, Linkedin, Twitter, Mail } from "lucide-react"
+import { motion } from 'framer-motion'
 
 export default function Footer() {
   const footerSections = [
     {
       title: "Products",
       links: [
-        { name: "SCOS", href: "/products#scos" },
-        { name: "Taskr", href: "/products#taskr" },
-        { name: "Homevy", href: "/products#homevy" },
+        { name: "SCOS", href: "/products/scos" },
+        { name: "Taskr", href: "/products/taskr" },
+        { name: "Homevy", href: "/products/homevy" },
         { name: "All Products", href: "/products" },
       ],
     },
@@ -41,47 +42,28 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-[#1A1A1A] text-white py-12 sm:py-16">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
-          {/* Brand */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6">
-              <img src="/genovo-logo.png" alt="Genovo Technologies" className="h-8 w-auto filter invert" />
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold">Genovo</h3>
-                <p className="text-xs text-gray-400">Technologies</p>
-              </div>
-            </div>
-            <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 max-w-md font-light leading-relaxed">
-              Building the digital future through elite technology innovation and uncompromising security.
+    <footer className="py-16 px-4 sm:px-6 lg:px-8 bg-brand-charcoal/50 backdrop-blur-lg border-t border-brand-offwhite/10">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div>
+            <Link href="/" className="text-xl font-heading font-bold text-brand-offwhite">
+              Genovo
+            </Link>
+            <p className="mt-4 text-brand-offwhite/60">
+              Building the future of decentralized digital empires.
             </p>
-            <div className="flex space-x-3 sm:space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-700 transition-colors touch-manipulation"
-                  aria-label={social.label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <social.icon size={16} className="sm:w-[18px] sm:h-[18px]" />
-                </a>
-              ))}
-            </div>
           </div>
-
-          {/* Footer Sections */}
-          {footerSections.map((section, index) => (
-            <div key={index}>
-              <h4 className="text-base sm:text-lg font-semibold mb-4 sm:mb-6">{section.title}</h4>
-              <ul className="space-y-2 sm:space-y-3">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
+          {footerSections.map((section) => (
+            <div key={section.title}>
+              <h3 className="text-lg font-heading font-bold text-brand-offwhite mb-4">
+                {section.title}
+              </h3>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-sm text-gray-400 hover:text-white transition-colors touch-manipulation"
+                      className="text-brand-offwhite/60 hover:text-brand-offwhite transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -91,15 +73,32 @@ export default function Footer() {
             </div>
           ))}
         </div>
-
-        <div className="border-t border-gray-800 mt-8 sm:mt-12 pt-6 sm:pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-xs sm:text-sm text-gray-400 text-center md:text-left">
-              © 2025 Genovo Technologies Limited. All rights reserved.
-            </p>
-            <p className="text-xs sm:text-sm text-gray-400 text-center md:text-right">
-              Building the digital future since 2025
-            </p>
+        
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-brand-offwhite/10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-brand-offwhite/60 mb-4 md:mb-0"
+          >
+            © 2025 Genovo Technologies Limited. All rights reserved.
+          </motion.div>
+          <div className="flex space-x-6">
+            {socialLinks.map((link) => {
+              const Icon = link.icon
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-brand-offwhite/60 hover:text-brand-offwhite transition-colors duration-200"
+                  aria-label={link.label}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              )
+            })}
           </div>
         </div>
       </div>

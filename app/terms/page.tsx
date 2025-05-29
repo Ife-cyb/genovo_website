@@ -11,7 +11,7 @@ export default function TermsPage() {
       <main className="pt-20">
         <LegalContent
           title="Terms of Service"
-          lastUpdated="December 15, 2024"
+          lastUpdated="December 15, 2025"
           content={`
 # Terms of Service
 
