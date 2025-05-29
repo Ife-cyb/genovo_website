@@ -39,7 +39,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[#F5F5F5]/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
+        isScrolled ? "bg-background/95 backdrop-blur-sm shadow-sm" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -47,7 +47,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <img src="/genovo-logo.png" alt="Genovo" className="h-8 w-auto" />
-            <span className="text-xl font-bold text-[#1A1A1A]">Genovo</span>
+            <span className="text-xl font-bold text-foreground transition-colors duration-300">Genovo</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -56,8 +56,10 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-[#1A1A1A] ${
-                  isActive(item.href) ? "text-[#1A1A1A] border-b-2 border-[#1A1A1A] pb-1" : "text-gray-600"
+                className={`text-sm font-medium transition-all duration-300 hover:text-foreground ${
+                  isActive(item.href) 
+                    ? "text-foreground border-b-2 border-foreground pb-1" 
+                    : "text-muted-foreground"
                 }`}
               >
                 {item.name}
@@ -69,14 +71,21 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
             <Link href="/contact">
-              <Button className="bg-[#1A1A1A] hover:bg-gray-800 text-white">Get Started</Button>
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300">
+                Get Started
+              </Button>
             </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
             <ThemeToggle />
-            <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-[#1A1A1A]">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setIsMenuOpen(!isMenuOpen)} 
+              className="text-foreground transition-colors duration-300"
+            >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
@@ -84,27 +93,26 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-[#F5F5F5] border-t border-gray-200">
-            <nav className="py-4 space-y-2">
+          <div className="md:hidden">
+            <nav className="px-2 pt-2 pb-4 space-y-1">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`block px-4 py-2 text-sm font-medium transition-colors ${
+                  className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                     isActive(item.href)
-                      ? "text-[#1A1A1A] bg-white"
-                      : "text-gray-600 hover:text-[#1A1A1A] hover:bg-gray-50"
+                      ? "text-foreground bg-primary/10"
+                      : "text-muted-foreground hover:text-foreground hover:bg-primary/5"
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <div className="px-4 pt-4">
-                <Link href="/contact">
-                  <Button className="w-full bg-[#1A1A1A] hover:bg-gray-800 text-white">Get Started</Button>
-                </Link>
-              </div>
+              <Link href="/contact" className="block px-3 py-2">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300">
+                  Get Started
+                </Button>
+              </Link>
             </nav>
           </div>
         )}
