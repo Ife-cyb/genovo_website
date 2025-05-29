@@ -6,14 +6,14 @@ import { Calendar, Lightbulb, Rocket, Globe } from "lucide-react"
 export default function GenovoStory() {
   const milestones = [
     {
-      year: "2024",
+      year: "2025",
       title: "Foundation",
       description:
         "Genovo Technologies was founded with a vision to revolutionize digital sovereignty and privacy-first technology solutions.",
       icon: Lightbulb,
     },
     {
-      year: "2024",
+      year: "2025",
       title: "SCOS Development",
       description:
         "Began development of the Synthetic Cognition Operating System, targeting critical infrastructure verticals.",
@@ -31,6 +31,18 @@ export default function GenovoStory() {
       description:
         "Scaling our solutions globally while maintaining our commitment to digital sovereignty and user privacy.",
       icon: Calendar,
+    },
+    {
+      title: "Global Expansion",
+      description: "Expanded operations to multiple continents with offices in key tech hubs",
+      year: "2025",
+      icon: Globe,
+    },
+    {
+      title: "Product Innovation",
+      description: "Launched revolutionary AI-powered solutions across our product suite",
+      year: "2025",
+      icon: Lightbulb,
     },
   ]
 

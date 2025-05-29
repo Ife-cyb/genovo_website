@@ -1,118 +1,15 @@
-import type React from "react"
-import type { Metadata, Viewport } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
+'use client'
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-})
+import { useEffect, useState } from 'react'
+import { Inter } from 'next/font/google'
+import { LoadingScreen } from '@/components/ui/loading'
+import './globals.css'
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://genovo.tech"),
-  title: "Genovo Technologies - Building the Digital Future",
-  description:
-    "Elite software solutions spanning secure infrastructure, AI platforms, and next-generation digital experiences. Featuring SCOS, Taskr, Homevy, and cutting-edge R&D initiatives.",
-  keywords: [
-    "Genovo Technologies",
-    "SCOS",
-    "Stealth Cyber Operating System",
-    "Taskr",
-    "Homevy",
-    "AI platforms",
-    "secure infrastructure",
-    "digital sovereignty",
-    "cybersecurity",
-  ],
-  authors: [
-    { name: "Afolabi Oluwatosin Abioye", url: "https://genovo.tech" },
-    { name: "Adegbite Ifeoluwapo", url: "https://genovo.tech" },
-  ],
-  creator: "Genovo Technologies Limited",
-  publisher: "Genovo Technologies Limited",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://genovo.tech",
-    siteName: "Genovo Technologies",
-    title: "Genovo Technologies - Building the Digital Future",
-    description:
-      "Elite software solutions spanning secure infrastructure, AI platforms, and next-generation digital experiences that scale globally.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Genovo Technologies - Building the Digital Future",
-        type: "image/jpeg",
-      },
-      {
-        url: "/og-image-square.jpg",
-        width: 1200,
-        height: 1200,
-        alt: "Genovo Technologies Logo",
-        type: "image/jpeg",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@GenovoTech",
-    creator: "@GenovoTech",
-    title: "Genovo Technologies - Building the Digital Future",
-    description:
-      "Elite software solutions spanning secure infrastructure, AI platforms, and next-generation digital experiences.",
-    images: ["/twitter-image.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
-  },
-  alternates: {
-    canonical: "https://genovo.tech",
-    languages: {
-      "en-US": "https://genovo.tech",
-      "en-GB": "https://genovo.tech/en-gb",
-    },
-  },
-  category: "technology",
-  classification: "Business",
-  other: {
-    "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "black-translucent",
-    "apple-mobile-web-app-title": "Genovo Technologies",
-  },
-    generator: 'v0.dev'
-}
+const inter = Inter({ subsets: ['latin'] })
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  userScalable: true,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#111827" },
-  ],
+export const metadata = {
+  title: 'Genovo Technologies Limited',
+  description: 'Powering intelligence, infrastructure, and autonomy through software.',
 }
 
 export default function RootLayout({
@@ -120,41 +17,50 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate loading time and preload key resources
+    Promise.all([
+      // Add any critical resources to preload here
+      new Promise(resolve => setTimeout(resolve, 2000)) // Minimum loading time
+    ]).then(() => {
+      setIsLoading(false)
+    })
+
+    // Add performance optimizations
+    if (typeof window !== 'undefined') {
+      // Preload key images
+      const imagesToPreload = [
+        '/logo.png',
+        // Add other critical images here
+      ]
+      imagesToPreload.forEach(src => {
+        const img = new Image()
+        img.src = src
+      })
+    }
+  }, [])
+
   return (
-    <html lang="en" suppressHydrationWarning className={inter.variable}>
+    <html lang="en" className={inter.className}>
       <head>
-        {/* Preconnect to external domains */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Genovo Technologies</title>
+        <meta name="description" content="Building the future of decentralized digital empires" />
+        
+        {/* Preload critical assets */}
+        <link rel="preload" href="/fonts/your-font.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        
+        {/* Add preconnect for external resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-
-        {/* Favicon and app icons */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-
-        {/* Additional meta tags */}
-        <meta name="application-name" content="Genovo Technologies" />
-        <meta name="apple-mobile-web-app-title" content="Genovo Technologies" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
-        <meta name="msapplication-TileColor" content="#2563eb" />
-        <meta name="msapplication-tap-highlight" content="no" />
-
-        {/* Security headers */}
-        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta httpEquiv="X-Frame-Options" content="DENY" />
-        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
-
-        {/* Performance hints */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//www.google-analytics.com" />
       </head>
-      <body className={`${inter.className} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange={false}>
+      <body>
+        {isLoading && <LoadingScreen />}
+        <main className={`${isLoading ? 'hidden' : ''}`}>
           {children}
-        </ThemeProvider>
+        </main>
       </body>
     </html>
   )

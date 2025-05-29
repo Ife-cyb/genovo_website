@@ -11,7 +11,7 @@ export default function PrivacyPage() {
       <main className="pt-20">
         <LegalContent
           title="Privacy Policy"
-          lastUpdated="December 15, 2024"
+          lastUpdated="December 15, 2025"
           content={`
 # Privacy Policy
 
