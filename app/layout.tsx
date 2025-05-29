@@ -20,26 +20,27 @@ export default function RootLayout({
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Simulate loading time and preload key resources
-    Promise.all([
-      // Add any critical resources to preload here
-      new Promise(resolve => setTimeout(resolve, 2000)) // Minimum loading time
-    ]).then(() => {
+    // Hide loading screen after initial load
+    const timer = setTimeout(() => {
       setIsLoading(false)
-    })
+    }, 1000)
 
-    // Add performance optimizations
+    // Preload critical resources
     if (typeof window !== 'undefined') {
-      // Preload key images
-      const imagesToPreload = [
-        '/logo.png',
-        // Add other critical images here
+      // Add font preloading
+      const fontUrls = [
+        'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
       ]
-      imagesToPreload.forEach(src => {
-        const img = new Image()
-        img.src = src
+      fontUrls.forEach(url => {
+        const link = document.createElement('link')
+        link.href = url
+        link.rel = 'preload'
+        link.as = 'style'
+        document.head.appendChild(link)
       })
     }
+
+    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -49,16 +50,13 @@ export default function RootLayout({
         <title>Genovo Technologies</title>
         <meta name="description" content="Building the future of decentralized digital empires" />
         
-        {/* Preload critical assets */}
-        <link rel="preload" href="/fonts/your-font.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-        
-        {/* Add preconnect for external resources */}
+        {/* Preconnect to external resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body>
+      <body className="bg-brand-charcoal text-brand-offwhite">
         {isLoading && <LoadingScreen />}
-        <main className={`${isLoading ? 'hidden' : ''}`}>
+        <main className={isLoading ? 'hidden' : ''}>
           {children}
         </main>
       </body>

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { motion, AnimatePresence } from 'framer-motion'
-import { GenovoLogo } from "@/components/ui/logo"
+import { Logo } from "@/components/ui/logo"
 
 const navItems = [
   { name: 'About', href: '#about' },
@@ -57,8 +57,8 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <GenovoLogo className="text-brand-offwhite" />
+          <Link href="/" className="flex items-center">
+            <Logo />
           </Link>
 
           {/* Desktop Navigation */}
