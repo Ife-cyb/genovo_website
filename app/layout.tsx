@@ -5,6 +5,8 @@ import { Providers } from '@/components/providers'
 import { ClientLayout } from '@/components/client-layout'
 import { Metadata } from 'next'
 import './globals.css'
+import { useEffect, useState } from 'react'
+import { LoadingScreen } from '@/components/ui/loading'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -27,44 +29,19 @@ export const metadata: Metadata = {
   },
 }
 
-import { useEffect, useState } from 'react'
-import { Inter } from 'next/font/google'
-import { LoadingScreen } from '@/components/ui/loading'
-import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
-
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
-      <body className={`${inter.variable} ${montserrat.variable} font-sans antialiased bg-background text-foreground`}>
-        <Providers>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
-        </Providers>
-
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Hide loading screen after initial load
     const timer = setTimeout(() => {
       setIsLoading(false)
     }, 1000)
 
-    // Preload critical resources
     if (typeof window !== 'undefined') {
-      // Add font preloading
       const fontUrls = [
         'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
       ]
@@ -81,12 +58,20 @@ export default function RootLayout({
   }, [])
 
   return (
-    <html lang="en" className={inter.className}>
-      <body className="bg-brand-charcoal text-brand-offwhite">
-        {isLoading && <LoadingScreen />}
-        <main className={isLoading ? 'hidden' : ''}>
-          {children}
-        </main>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className={`${inter.variable} ${montserrat.variable} font-sans antialiased bg-background text-foreground`}>
+        <Providers>
+          <ClientLayout>
+            {isLoading && <LoadingScreen />}
+            <main className={isLoading ? 'hidden' : ''}>
+              {children}
+            </main>
+          </ClientLayout>
+        </Providers>
       </body>
     </html>
   )
