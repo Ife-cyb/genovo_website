@@ -6,7 +6,7 @@ import { Logo, LoadingIndicator } from './logo'
 export function LoadingScreen() {
   return (
     <motion.div
-      className="fixed inset-0 bg-brand-charcoal z-50 flex flex-col items-center justify-center"
+      className="fixed inset-0 bg-background z-50 flex flex-col items-center justify-center"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

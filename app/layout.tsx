@@ -1,5 +1,3 @@
-'use client'
-
 import { Montserrat, Inter } from 'next/font/google'
 import { Providers } from '@/components/providers'
 import { ClientLayout } from '@/components/client-layout'
@@ -21,6 +19,10 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: 'Genovo Technologies Limited',
   description: 'Powering intelligence, infrastructure, and autonomy through software.',
+  viewport: 'width=device-width, initial-scale=1',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
@@ -34,7 +36,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${inter.variable} ${montserrat.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${montserrat.variable} font-sans antialiased bg-background text-foreground`}>
         <Providers>
           <ClientLayout>
             {children}
