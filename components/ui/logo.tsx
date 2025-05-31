@@ -14,7 +14,7 @@ const sizeClasses = {
   lg: 'text-3xl'
 }
 
-export function Logo({ className = '', textColor = 'text-brand-offwhite', size = 'md' }: LogoProps) {
+export function Logo({ className = '', textColor = 'text-foreground', size = 'md' }: LogoProps) {
   return (
     <motion.div
       className={`flex items-center space-x-2 ${className}`}
@@ -45,13 +45,13 @@ export function LoadingIndicator({ size = 40, className = '' }) {
     >
       {/* Outer ring */}
       <motion.div
-        className="absolute inset-0 border-2 border-brand-offwhite/20 rounded-full"
+        className="absolute inset-0 border-2 border-foreground/20 rounded-full"
         style={{ width: size, height: size }}
       />
       
       {/* Spinning ring */}
       <motion.div
-        className="absolute inset-0 border-2 border-transparent border-t-brand-offwhite rounded-full"
+        className="absolute inset-0 border-2 border-transparent border-t-foreground rounded-full"
         style={{ width: size, height: size }}
         animate={{ rotate: 360 }}
         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}

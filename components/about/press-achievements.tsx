@@ -12,7 +12,8 @@ export default function PressAchievements() {
       description: "Recognized for breakthrough work in digital sovereignty and privacy-first architecture",
       date: "2025",
       category: "Innovation",
-      color: "blue",
+      bgColor: "bg-blue-100",
+      iconColor: "text-blue-600",
     },
     {
       icon: Star,
@@ -20,7 +21,8 @@ export default function PressAchievements() {
       description: "Featured as a promising African tech startup building the future of secure infrastructure",
       date: "2025",
       category: "Recognition",
-      color: "purple",
+      bgColor: "bg-purple-100",
+      iconColor: "text-purple-600",
     },
     {
       icon: TrendingUp,
@@ -28,7 +30,32 @@ export default function PressAchievements() {
       description: "Successfully launched MVP for multiple products with strong market validation",
       date: "2025",
       category: "Product",
-      color: "green",
+      bgColor: "bg-green-100",
+      iconColor: "text-green-600",
+    },
+    {
+      title: "Forbes 30 Under 30",
+      description: "Recognition for innovation in technology",
+      date: "2025",
+      category: "Recognition",
+      bgColor: "bg-purple-100",
+      iconColor: "text-purple-600",
+    },
+    {
+      title: "TechCrunch Disrupt Winner",
+      description: "Best Enterprise Solution",
+      date: "2025",
+      category: "Recognition",
+      bgColor: "bg-purple-100",
+      iconColor: "text-purple-600",
+    },
+    {
+      title: "AI Excellence Award",
+      description: "For contributions to industrial automation",
+      date: "2025",
+      category: "Recognition",
+      bgColor: "bg-purple-100",
+      iconColor: "text-purple-600",
     },
     {
       title: "Forbes 30 Under 30",
@@ -109,9 +136,9 @@ export default function PressAchievements() {
             <Card key={index} className="border border-gray-200 hover:shadow-lg transition-all duration-300 group">
               <CardContent className="p-6 text-center">
                 <div
-                  className={`w-16 h-16 bg-${achievement.color}-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
+                  className={`w-16 h-16 ${achievement.bgColor} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}
                 >
-                  <achievement.icon className={`w-8 h-8 text-${achievement.color}-600`} />
+                  {achievement.icon && <achievement.icon className={`w-8 h-8 ${achievement.iconColor}`} />}
                 </div>
                 <Badge variant="outline" className="mb-3">
                   {achievement.category}
