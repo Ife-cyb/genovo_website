@@ -57,6 +57,27 @@ export default function PressAchievements() {
       bgColor: "bg-purple-100",
       iconColor: "text-purple-600",
     },
+    {
+      title: "Forbes 30 Under 30",
+      description: "Recognition for innovation in technology",
+      date: "2025",
+      category: "Recognition",
+      color: "purple",
+    },
+    {
+      title: "TechCrunch Disrupt Winner",
+      description: "Best Enterprise Solution",
+      date: "2025",
+      category: "Recognition",
+      color: "purple",
+    },
+    {
+      title: "AI Excellence Award",
+      description: "For contributions to industrial automation",
+      date: "2025",
+      category: "Recognition",
+      color: "purple",
+    },
   ]
 
   const pressMentions = [
