@@ -7,11 +7,6 @@ import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Genovo Technologies Limited',
-  description: 'Powering intelligence, infrastructure, and autonomy through software.',
-}
-
 export default function RootLayout({
   children,
 }: {
@@ -45,15 +40,6 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={inter.className}>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Genovo Technologies</title>
-        <meta name="description" content="Building the future of decentralized digital empires" />
-        
-        {/* Preconnect to external resources */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
       <body className="bg-brand-charcoal text-brand-offwhite">
         {isLoading && <LoadingScreen />}
         <main className={isLoading ? 'hidden' : ''}>
