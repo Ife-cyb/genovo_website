@@ -35,6 +35,8 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Ahrefs Web Analytics */}
+        <script src="https://analytics.ahrefs.com/analytics.js" data-key="asrHwBiwtOQ8Q+sudjXgOA" async></script>
       </head>
       <body className={`${inter.variable} ${montserrat.variable} font-sans antialiased bg-background text-foreground`}>
         <Providers>
